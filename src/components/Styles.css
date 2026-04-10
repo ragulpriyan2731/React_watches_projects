@@ -1,0 +1,23 @@
+.container{
+    background-color: rgba(11, 4, 1, 0.964);
+}
+.productlist{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 10px;
+}
+.buy-btn{
+    cursor: pointer;
+    background-color: rgb(16, 110, 16);
+    padding: 10px;
+    border: none;
+    border-radius: 7px;
+    color: white;
+    margin-top: 5px;
+
+}
+.buy-btn:disabled{
+    cursor: not-allowed;
+    background-color: gray;
+}
