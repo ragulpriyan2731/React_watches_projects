@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import images1 from '../assets/watch 1.jpg'
 import images2 from '../assets/watch 2.jpg'
 import images3 from '../assets/watch 3.jpg'
@@ -59,23 +59,78 @@ function Watches() {
         img: images6
     }
 ]
-  return (
+// Logic for shop hours
+const hour = new Date() .getHours();
+const openHour = 9;
+const closeHour = 20;
+const isOpen = hour >= openHour && hour < closeHour
+
+// state initialization
+// create an object where keys are product id and values are stock
+// example state: {1: 8, 2: 0, 3: 5, 4: 9, 5: 6, 6: 0}
+const [quantity, setQuantity] = useState(
+productLists.reduce((acc, product) => {
+acc[product.id]=product.stock;
+return acc;
+}, {})
+);
+// handle function
+const increment = (id, maxstock) => {
+setQuantity(prev => ({
+    ...prev,
+    [id]: prev[id] < maxstock ? prev[id] + 1 : prev[id]
+}));
+};
+const decrement = (id) => {
+setQuantity(prev => ({
+    ...prev,
+    [id]: prev[id] > 0 ? prev[id] -1 : 0
+}));
+
+};
+    const customerNmae = "Ragul priyan"
+    const buyFunction = (name) => alert (`Successfully Ordered: ${name} 
+    Thank you for your order ${customerNmae}!
+    Shop again...`);
+
+return (
+    <div className='shop-container'>
+        <h1>Watch Shopping Cart</h1>
+    {productLists.length > 0 ? (
     <div className='productlist'>
     {productLists.map((product) => (
-    <div key ={product.id}>
+    <div key ={product.id} className={`card ${product.soldout ? "sold-out" : ""}`}>
     <img src={product.img} alt={product.name} width="250" />
     <h3>{product.name}</h3>
-    <p>₹{product.costs}</p>
-    <button className="buy-btn" 
-    disabled={product.soldout === true}
-    onClick={Watches}>{product.soldout === true ? "Not Available" : "Buy Product"}</button>
-    <p>{product.stock >0 ? "Available" :"Out of Stock"}</p>
+    <p>Price: ₹{product.costs}</p>
+    {/* Quantity Controls */}
+              <div className="stocks">
+                <button onClick={() => decrement(product.id)} disabled={quantity[product.id] <= 0}>-</button>
+                <span> Stocks: {quantity[product.id]} </span>
+                <button onClick={() => increment(product.id, product.stock)} disabled={quantity[product.id] >= product.stock}>+</button>
+              </div>
+    {/* Buy Button */}
+<button className="buy-btn" 
+    disabled={product.soldout || !isOpen}
+    onClick={ () => buyFunction(product.name)}>
+    {product.soldout ? "Out of Stock" : "Buy Product"}</button>
     </div>
 ))}
     </div>
-  )
+  ) : (
+    <p className='noData'>No pooduct found.</p>
+  )}
+  {/* Footer Status */}
+      <p className="status">
+        {isOpen 
+          ? "We are Open! (10 AM - 8 PM)" 
+          : "Sorry, we are Closed. Opens at 10 AM"}
+      </p>
+    </div>
+  );
+}
 
-} 
+ 
 
 
 export default Watches

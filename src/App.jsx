@@ -4,7 +4,6 @@
 // import heroImg from './assets/hero.png'
 import React from 'react'
 // import './App.css'
-import Watch from './components/Watches'
 import Watches from './components/Watches'
 
 function App() {

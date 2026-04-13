@@ -1,23 +1,44 @@
-.container{
-    background-color: rgba(11, 4, 1, 0.964);
+.productlist {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
 }
-.productlist{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    padding: 10px;
+
+.card {
+  border: 1px solid #f1eaea;
+  padding: 10px;
+  background-color: #0f100f;
 }
-.buy-btn{
-    cursor: pointer;
-    background-color: rgb(16, 110, 16);
-    padding: 10px;
-    border: none;
-    border-radius: 7px;
-    color: white;
-    margin-top: 5px;
+
+.card.sold-out {
+  background-color: #efe7e7;
+  opacity: 0.6;
 
 }
-.buy-btn:disabled{
-    cursor: not-allowed;
-    background-color: gray;
+
+.stocks {
+  margin: 15px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.buy-btn {
+  background-color: #0bef40;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.buy-btn:hover{
+    background-color:#2Cea58 ;
+}
+
+.buy-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  border-radius: 10px;
 }
