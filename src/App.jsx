@@ -4,14 +4,16 @@
 // import heroImg from './assets/hero.png'
 import React from 'react'
 // import './App.css'
-import Watches from './components/Watches'
+// import Watches from './components/Watches'
+import Myrouter from './Components_router/Router'
 
 function App() {
 
   return (
-    <div className='container'>
-      <Watches />
-    </div>
+    // <div className='container'>
+    //   <Watches />
+    // </div>
+    <Myrouter />
   )
 }
 
