@@ -1,24 +1,22 @@
 import axios from 'axios'
-import { useEffect } from 'react'
+import { useEffect, } from 'react'
 
 
 const Application =()=>{
-const Data = ()=>{
-   console.log(axios.get("https://api.restful-api.dev/collections")) 
-
-
-
+    // const [user,setuser] = useState([])
+    async function Data(){
+   const {Data} = (axios.get("https://fakestoreapi.com/products")) 
+   console.log(Data)
 }
 
 
 useEffect(() =>{
-
+Data()
 
 }, [])
 
     return(
-        <h1>hi</h1>
-
-    )
+        <h1>user</h1>
+)
 }
 export default Application
