@@ -6,19 +6,21 @@
 // import './App.css'
 // import Watches from './components/Watches'
 // import Myrouter from './Components_router/Router'
-// import Application from "./Component/Api_react"
 
-import {useState} from "react";
-import Secondcomponent from "./ComponentsUsecontext/Secondcolor";
-import { Colorcontext} from './ComponentsUsecontext/Firstcolor';
+
+import Application from "./Component/Api_react"
+
+// import {useState} from "react";
+// import Secondcomponent from "./ComponentsUsecontext/Secondcolor";
+// import { Colorcontext} from './ComponentsUsecontext/Firstcolor';
 
     
 const App=()=> {
-  const [color, setcolor]=useState("simple")
+  // const [color, setcolor]=useState("simple")
 
-    const handlebutton=()=>{
-        setcolor((prev)=>prev ==='simple'? 'white':'black')
-    }
+  //   const handlebutton=()=>{
+  //       setcolor((prev)=>prev ==='simple'? 'white':'black')
+  //   }
 
   return (
     
@@ -26,12 +28,12 @@ const App=()=> {
     //   <Watches />
     // </div>
     // <Myrouter />
+    <Application />
 
-
-    <Colorcontext.Provider value={{color, setcolor}}>
-    <button onClick={handlebutton}>Click me</button>
-    <Secondcomponent />
-    </Colorcontext.Provider>
+    // <Colorcontext.Provider value={{color, setcolor}}>
+    // <button onClick={handlebutton}>Click me</button>
+    // <Secondcomponent />
+    // </Colorcontext.Provider>
 )
 }
 
